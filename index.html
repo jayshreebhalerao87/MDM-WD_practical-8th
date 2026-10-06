@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-96">
+
+        <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">
+            Student Grade Calculator
+        </h2>
+
+        <!-- Password -->
+        <label class="block mb-2 font-medium">Enter Password</label>
+
+        <div class="flex mb-4">
+            <input type="password" id="password"
+                class="w-full p-2 border rounded-l"
+                placeholder="Enter password">
+
+            <button onclick="togglePassword()"
+                class="bg-purple-600 text-white px-4 rounded-r">
+                Show
+            </button>
+        </div>
+
+        <!-- Marks 1 -->
+        <label>Enter Marks 1</label>
+        <input type="number" id="m1"
+            class="w-full p-2 border rounded mb-4">
+
+        <!-- Marks 2 -->
+        <label>Enter Marks 2</label>
+        <input type="number" id="m2"
+            class="w-full p-2 border rounded mb-4">
+
+        <!-- Marks 3 -->
+        <label>Enter Marks 3</label>
+        <input type="number" id="m3"
+            class="w-full p-2 border rounded mb-4">
+
+        <!-- Calculate Button -->
+        <button onclick="calculate()"
+            class="w-full bg-purple-600 hover:bg-purple-700 text-white p-2 rounded font-bold">
+            Calculate Result
+        </button>
+
+        <!-- Result -->
+        <div id="result"
+            class="mt-5 p-4 bg-purple-50 rounded text-center">
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Show / Hide Password
+        function togglePassword() {
+
+            let password = document.getElementById("password");
+            let button = event.target;
+
+            if (password.type === "password") {
+                password.type = "text";
+                button.innerHTML = "Hide";
+            }
+            else {
+                password.type = "password";
+                button.innerHTML = "Show";
+            }
+        }
+
+
+        // Calculate Grade
+        function calculate() {
+
+            let m1 = Number(document.getElementById("m1").value);
+            let m2 = Number(document.getElementById("m2").value);
+            let m3 = Number(document.getElementById("m3").value);
+
+            let total = m1 + m2 + m3;
+
+            let percentage = total / 3;
+
+            let grade;
+
+            if (percentage >= 90) {
+                grade = "A+";
+            }
+            else if (percentage >= 80) {
+                grade = "A";
+            }
+            else if (percentage >= 70) {
+                grade = "B";
+            }
+            else if (percentage >= 60) {
+                grade = "C";
+            }
+            else if (percentage >= 40) {
+                grade = "D";
+            }
+            else {
+                grade = "F";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Total Marks: " + total + "<br>" +
+                "Percentage: " + percentage + "%<br>" +
+                "Grade: " + grade;
+        }
+
+    </script>
+
+</body>
+</html>
+```
